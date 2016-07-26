@@ -1,16 +1,25 @@
 #! /bin/bash
 
 
-#mkfifo temp0 temp1
-#avconv -i MVI_3395.MP4 -c copy -bsf:v h264_mp4toannexb -f mpegts -y temp0 2> /dev/null & \
-#avconv -i MVI_3394.MP4 -c copy -bsf:v h264_mp4toannexb -f mpegts -y temp1 2> /dev/null & \
-#avconv -f mpegts -i "concat:temp0|temp1" -c copy -bsf:a aac_adtstoasc output.mp4
+##################
+# INSTALL avconv #
+##################
+# sudo apt-get install libav-tools
 
 
+##########
+# MANUAL #
+##########
+# mkfifo temp0 temp1
+# avconv -i MVI_3395.MP4 -c copy -bsf:v h264_mp4toannexb -f mpegts -y temp0 2> /dev/null & \
+# avconv -i MVI_3394.MP4 -c copy -bsf:v h264_mp4toannexb -f mpegts -y temp1 2> /dev/null & \
+# avconv -f mpegts -i "concat:temp0|temp1" -c copy -bsf:a aac_adtstoasc output.mp4
 
-#
+
+#############
+# AUTOMATED #
+#############
 # . ./concat_mp4.sh MVI_3395.MP4 MVI_3394.MP4
-#
 
 
 output="output.mp4"
