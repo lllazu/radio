@@ -1,0 +1,66 @@
+#EXTM3U
+
+#EXTINF:-1,Radio ENERGY
+http://stream.metacast.eu/nrj.ogg
+#EXTINF:-1,Радио 1
+http://stream.metacast.eu/radio1.ogg
+#EXTINF:-1,БГ Радио
+http://stream.metacast.eu/bgradio.ogg
+
+#EXTINF:-1,Radio Melody
+http://46.10.150.123:80/melody.mp3
+#EXTINF:-1,CITY Radio&TV
+http://stream.metacast.eu/city.ogg
+#EXTINF:-1,Radio Fresh
+http://193.108.24.21:8000/fresh
+#EXTINF:-1,Radio N-JOY
+http://46.10.150.243/njoy.mp3
+#EXTINF:-1,Radio The Voice
+http://31.13.223.148:8000/thevoice.mp3
+#EXTINF:-1,Радио Витоша
+http://31.13.223.148:8000/vitosha.mp3
+#EXTINF:-1,Радио Радио FM+
+http://pulsar.atlantis.bg:8000/fmplus.ogg
+
+#EXTINF:-1,Radio Nova
+http://stream.metacast.eu/nova.ogg
+#EXTINF:-1,Alpha Radio
+http://alpharadio.bg:8000/stream
+#EXTINF:-1,Traffic Radio
+http://trafficradio.org:8002
+#EXTINF:-1,Radio33 House
+http://radio33.org:8000
+#EXTINF:-1,Radio33 Trance
+http://radio33.org:8010
+#EXTINF:-1,Radio33 Progressive
+http://radio33.org:8020
+#EXTINF:-1,Radio33 Techno
+http://radio33.org:8030
+#EXTINF:-1,Radio33 Psy&GOA
+http://radio33.org:8040
+#EXTINF:-1,Radio33 Dubstep, Drum & Bass
+http://radio33.org:8050
+#EXTINF:-1,Radio33 Ambient&Chill
+http://radio33.org:8060
+#EXTINF:-1,Radio33 Electro Esthetica
+http://radio33.org:8070
+#EXTINF:-1,HBR1 Ambient
+http://radio.hbr1.com:19800/ambient.ogg
+#EXTINF:-1,HBR1 Trance
+http://radio.hbr1.com:19800/trance.ogg
+#EXTINF:-1,HBR1 Tronic
+http://radio.hbr1.com:19800/tronic.ogg
+
+#EXTINF:-1,Радио 1 Рок
+http://stream.metacast.eu/radio1rock.ogg
+#EXTINF:-1,Radio Z-Rock
+http://46.10.150.123:80/z-rock.mp3
+
+#EXTINF:-1,Радио Вероника
+http://stream.metacast.eu/veronika.ogg
+#EXTINF:-1,Радио Ултра
+http://88.80.96.25:8020
+#EXTINF:-1,Радио Веселина
+http://31.13.223.148:8000/veselina.mp3
+#EXTINF:-1,Фолк Радио Наздраве
+http://stream-bg.net:8020/nazdrave
