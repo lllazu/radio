@@ -26,7 +26,7 @@ radio[hbr1tronic]=http://radio.hbr1.com:19800/tronic.ogg
 
 
 if [ -z "$1" ]; then
-	for i in "${!radio[@]}"
+    for i in "${!radio[@]}"
     do
         echo "$i ==> ${radio[$i]}"
     done
