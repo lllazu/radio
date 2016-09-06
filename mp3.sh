@@ -16,7 +16,7 @@
 
 
 if [ -z "$1" ]; then
-    echo "[ERROR] url missing"
+	echo "[ERROR] url missing"
 else
 	youtube-dl --extract-audio --audio-format mp3 --audio-quality 0 $1
 fi
