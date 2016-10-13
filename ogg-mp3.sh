@@ -12,20 +12,29 @@
 
 
 function convert {
-    input=$1
-    output=${1%.*}.mp3
+    input_temp=$(mktemp --suffix=.ogg)
+    output_temp=$(mktemp --suffix=.mp3)
+    rm -rf $output_temp
 
-    cp $input temp.ogg
-    avconv -i temp.ogg -c:a libmp3lame -q:a 0 temp.mp3
-    cp temp.mp3 $output
+    cp $1 $input_temp
+    avconv -i $input_temp -c:a libmp3lame -q:a 0 $output_temp
+    cp $output_temp $2
 
-    rm -rf temp.*
+    rm -rf $input_temp
+    rm -rf $output_temp
 }
 
 if [ -f "$1" ]; then
-    echo "$1"
+    convert $1 ${1%.*}.mp3
 elif [ -d "$1" ] && [ -d "$2" ]; then
-    echo "$1 -> $2"
+    input_files=()
+    working_dir=$(pwd)
+    cd $1 && for f in *.ogg; do 
+        input_files+=("$f")
+    done && cd $working_dir
+    for f in "${input_files[@]}"; do 
+        convert $1/$f $2/${f%.*}.mp3
+    done 
 else
     echo "[ERROR] unknown file or directories"
 fi
