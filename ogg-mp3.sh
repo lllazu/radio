@@ -1,14 +1,22 @@
 #! /bin/bash
 
+# avconv
+#
 # http://superuser.com/questions/15327/how-to-convert-ogg-to-mp3
 
+# prerequisites
+#
 # sudo apt-get install vorbis-tools
-
+#
 # sudo add-apt-repository ppa:heyarje/libav-11 && sudo apt-get update
 # sudo apt-get upgrade
 # sudo apt-get install libav-tools
 
-# cd downloaded && for f in *.ogg; do echo "$f"; done && cd ../
+# example
+#
+# . ../ogg-mp3.sh cool.ogg
+# . ./ogg-mp3.sh downloaded/ converted/
+
 
 
 function convert {
