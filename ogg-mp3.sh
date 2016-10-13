@@ -12,7 +12,7 @@
 # sudo apt-get upgrade
 # sudo apt-get install libav-tools
 
-# example
+# examples
 #
 # . ../ogg-mp3.sh cool.ogg
 # . ./ogg-mp3.sh downloaded/ converted/
@@ -20,16 +20,7 @@
 
 
 function convert {
-    input_temp=$(mktemp --suffix=.ogg)
-    output_temp=$(mktemp --suffix=.mp3)
-    rm -rf $output_temp
-
-    cp $1 $input_temp
-    avconv -i $input_temp -c:a libmp3lame -q:a 0 $output_temp
-    cp $output_temp $2
-
-    rm -rf $input_temp
-    rm -rf $output_temp
+    avconv -i $1 -c:a libmp3lame -q:a 0 $2
 }
 
 if [ -f "$1" ]; then
