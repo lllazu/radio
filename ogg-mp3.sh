@@ -18,7 +18,6 @@
 # . ./ogg-mp3.sh downloaded/ converted/
 
 
-
 function convert {
     avconv -i $1 -c:a libmp3lame -q:a 0 $2
 }
