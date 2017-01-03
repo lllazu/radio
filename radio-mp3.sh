@@ -9,4 +9,9 @@
 # -acodec libmp3lame
 #	mp3 encoder, requires ubuntu-restricted-extras
 
-avconv -i $1 -acodec libmp3lame -map_metadata 0:s:0 "rec-$(date +%Y%m%d-%H%M%S).mp3"
+
+if [ -z "$1" ]; then
+	echo "[ERROR] url missing"
+else
+	avconv -i $1 -acodec libmp3lame -map_metadata 0:s:0 "rec-$(date +%Y%m%d-%H%M%S).mp3"
+fi
