@@ -7,16 +7,6 @@
 #   totem URL
 #   totem radio.m3u
 
-# convert stream to mp3 with audacity
-#
-# sudo add-apt-repository ppa:ubuntuhandbook1/audacity
-# sudo apt-get update
-# sudo apt-get install audacity
-#
-# File -> Open
-# <select portion of file>
-# File -> Export Selection
-
 
 declare -A radio
 radio[bgradio]=http://stream.metacast.eu/bgradio.ogg
@@ -41,7 +31,8 @@ if [ -z "$1" ]; then
         echo "$i ==> ${radio[$i]}"
     done
 elif [[ ${radio[$1]} ]]; then
-	wget -O "$1-$(date +%Y%m%d-%H%M%S).ogg" "${radio[$1]}"
+	#wget -O "$1-$(date +%Y%m%d-%H%M%S).ogg" "${radio[$1]}"
+	avconv -i "${radio[$1]}" -acodec libmp3lame -map_metadata 0:s:0 "$1-$(date +%Y%m%d-%H%M%S).mp3"
 else
 	echo "unknown radio"
 fi
