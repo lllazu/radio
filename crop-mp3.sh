@@ -12,7 +12,7 @@ input_temp="/tmp/tmp-$(date +%Y%m%d-%H%M%S).mp3"
 cp "$1" $input_temp
 output_temp="/tmp/tmp-$(date +%Y%m%d-%H%M%S)-2.mp3"
 
-avconv -i $input_temp -c copy -ss $2 -to $3 $output_temp
+avconv -i $input_temp -ab 256k -ss $2 -to $3 $output_temp
 
 rm -f $input_temp
 cp $output_temp "${1%.*}-2.mp3"

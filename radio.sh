@@ -20,6 +20,7 @@ radio[33trance]=http://radio33.org:8010
 radio[33progressive]=http://radio33.org:8020
 radio[33techno]=http://radio33.org:8030
 radio[33ambient]=http://radio33.org:8060
+radio[33electro]=http://radio33.org:8070
 radio[hbr1ambient]=http://radio.hbr1.com:19800/ambient.ogg
 radio[hbr1trance]=http://radio.hbr1.com:19800/trance.ogg
 radio[hbr1tronic]=http://radio.hbr1.com:19800/tronic.ogg
