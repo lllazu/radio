@@ -1,6 +1,9 @@
 # record
 online radio, recording and video processing
 
+# copy.lua
+lua copy.lua from to 
+
 # rsync
 rsync -avh source/ dest/ --delete-after
 
