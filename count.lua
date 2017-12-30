@@ -1,13 +1,23 @@
 --[[
 documentation: count files
-usage: lua count.lua <from>
+usage: lua count.lua <from> <mode>
 dependencies: https://keplerproject.github.io/luafilesystem/
 ]]
 
 local lfs = require "lfs"
 
 
-local donotcopy = {"5-dance/rock0", "5-dance/rock1", "5-dance/rock2"}
+local function load_file(fileName, environment)
+	if setfenv and loadfile then
+		local f = assert(loadfile(fileName))
+		setfenv(f,environment)
+		return f
+	else
+		return assert(loadfile(fileName, "t", environment))
+	end
+end
+
+local donotcopy = load_file("donotcopy.lua", {mode = arg[2]})()
 
 local counter = 1
 local countFiles
@@ -46,9 +56,8 @@ countFiles = function (from)
 	end
 end
 
-
 if #arg < 1 then
-	print("usage: lua count.lua <from>")
+	print("usage: lua count.lua <from> <mode>")
 	return
 end
 
