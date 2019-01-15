@@ -9,14 +9,21 @@ rsync -avh source/ dest/ --delete-after
 
 # mp3info
 mp3info -r a -p "%r %f \\n" *.mp3
+id3info *.mp3
 
 # strip mp3 info
-id3convert -s a.mp3
-id3convert -s /music/*
+id3convert -s *.mp3
+id3convert -s ./*/*
 
-# mp3 info
-id3info a.mp3 
-id3info /music/*
+# jpg metadata
+exiftool -AllDates='2018:09:15 11:11:11' -overwrite_original IMG_20180915_111111.jpg
+exiv2 IMG_20180915_111111.jpg
+
+# flv to mp4
+avconv -i input.flv -c:a copy output.mp4
+
+# ogg to mp3
+avconv -i input.ogg -c:a libmp3lame -q:a 0 output.mp3
 
 # dependencies
 ```
