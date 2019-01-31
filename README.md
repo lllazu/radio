@@ -15,6 +15,12 @@ id3info *.mp3
 id3convert -s *.mp3
 id3convert -s ./*/*
 
+# png to jpg
+convert IMG_20170313_111110.png IMG_20170313_111110.jpg
+mogrify -format jpg *.png
+for filename in *.png; do echo $filename; done
+for filename in *.png; do echo "${filename%%.*}"; done
+
 # jpg metadata
 exiftool -AllDates='2018:09:15 11:11:11' -overwrite_original IMG_20180915_111111.jpg
 exiv2 IMG_20180915_111111.jpg
