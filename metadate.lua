@@ -8,6 +8,15 @@ dependencies: https://keplerproject.github.io/luafilesystem/
 local lfs = require "lfs"
 
 
+
+local function doCommand (command)
+	local f = assert(io.popen(command, "r"))
+	local content = f:read("*all")
+	f:close()
+	return content or ""
+end
+
+
 -- format: IMG_20190130_112233.jpg
 local function isMedia (fileName)
 	words = {}
@@ -16,13 +25,13 @@ local function isMedia (fileName)
 	end
 	
 	if 
-		#words == 4 and 
+		(#words == 4 or #words == 5) and 
 		words[2]:len() == 8 and
 		words[3]:len() == 6 and
 		(
-		words[4]:lower() == "jpg" or
-		words[4]:lower() == "png" or
-		words[4]:lower() == "mp4"
+		words[#words]:lower() == "jpg" or
+		words[#words]:lower() == "png" or
+		words[#words]:lower() == "mp4"
 		)
 	then
 		local media ={}
@@ -40,10 +49,19 @@ end -- isMedia
 local function processMedia (fileName, fileNamePath)
 	local media = isMedia(fileName, fileNamePath)
 	if media then 
-		print(string.format("exiftool -AllDates='%s:%s:%s %s:%s:%s' -overwrite_original %s", 
+		--print("# media: " .. fileNamePath)
+		
+		local fileDate = string.format("%s:%s:%s %s:%s:%s", 
 			media.year, media.month, media.date,
-			media.hour, media.minute, media.second,
-			fileNamePath))
+			media.hour, media.minute, media.second)
+		
+		--if not doCommand("exiv2 " .. fileNamePath):find("Image timestamp : " .. fileDate, 1, true) then
+		if not doCommand("exiftool " .. fileNamePath):find("Create Date                     : " .. fileDate, 1, true) then
+			print("# update : " .. fileNamePath)
+			print(doCommand(string.format("exiftool -AllDates='%s' -overwrite_original %s", fileDate, fileNamePath)))
+		end
+	else
+		print("# no media: " .. fileNamePath)
 	end
 end
 
@@ -89,7 +107,7 @@ traverse = function (file, func)
 		end
 	elseif attrFrom.mode == "file" then
 		counter = counter + 1
-		print("# traverse: [" .. counter .. "] " .. from)
+		--print("# traverse: [" .. counter .. "] " .. from)
 		if fromObject and func then func(fromObject.name, fromObject.path) end
 	end
 end
