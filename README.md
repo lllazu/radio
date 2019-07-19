@@ -36,6 +36,10 @@ avconv -i input.flv -c:a copy output.mp4
 # ogg to mp3
 avconv -i input.ogg -c:a libmp3lame -q:a 0 output.mp3
 
+# access android file system
+# https://askubuntu.com/questions/342319/where-are-mtp-mounted-devices-located-in-the-filesystem/594896
+cd /var/run/user/1000/gvfs/mtp:host=%5Busb%3A003%2C009%5D/Вътрешно споделено хранилище/DCIM/Camera
+
 # dependencies
 ```
 sudo apt-get install libav-tools
