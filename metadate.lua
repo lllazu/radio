@@ -2,6 +2,7 @@
 documentation: change modification time of pictures/videos
 usage: lua metadate.lua <dir>
 usage: lua metadate.lua /media/laz/lg/snimki/2018___pixel2/E/
+usage: lua metadate.lua /home/laz/Pictures/
 dependencies: https://keplerproject.github.io/luafilesystem/
 ]]
 
@@ -139,7 +140,7 @@ traverse = function (file, func)
 		local paths = {}
 		for entry in lfs.dir(from) do
 			if entry ~= "." and entry ~= ".." then
-				local pathFrom, pathTo
+				local pathFrom
 				if from ~= "/" then 
 					if from:sub(#from,#from) == "/" then
 						pathFrom = from .. entry
