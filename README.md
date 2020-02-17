@@ -42,13 +42,11 @@ cd /var/run/user/1000/gvfs/mtp\:host\=%5Busb%3A003%2C009%5D/Вътрешно\ с
 
 # dependencies
 ```
-sudo apt-get install libav-tools
+sudo apt-get install ffmpeg x264 x265
 sudo wget https://yt-dl.org/downloads/latest/youtube-dl -O /usr/bin/youtube-dl
 sudo chmod a+rx /usr/bin/youtube-dl
 sudo apt-get install mp3info
 sudo apt install mediainfo
 sudo apt-get install libimage-exiftool-perl
 sudo apt-get install libid3-tools
-sudo add-apt-repository ppa:jonathonf/ffmpeg-3
-sudo apt update && sudo apt install ffmpeg libav-tools x264 x265
 ```

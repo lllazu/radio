@@ -1,8 +1,8 @@
 #! /bin/bash
 
-# avconv
+# ffmpeg
 #
-# http://superuser.com/questions/15327/how-to-convert-ogg-to-mp3
+# https://stackoverflow.com/questions/3255674/convert-audio-files-to-mp3-using-ffmpeg
 
 # prerequisites
 #
@@ -14,12 +14,13 @@
 
 # examples
 #
-# . ../ogg-mp3.sh cool.ogg
-# . ./ogg-mp3.sh downloaded converted
+# . ../wav-mp3.sh cool.wav
+# . ./wav-mp3.sh downloaded converted
 
 
 function convert {
-    avconv -i $1 -c:a libmp3lame -q:a 0 $2
+	# -vn -ar 44100 -ac 2
+    ffmpeg -i $1 -c:a libmp3lame -q:a 0 $2
 }
 
 if [ -f "$1" ]; then
@@ -27,7 +28,7 @@ if [ -f "$1" ]; then
 elif [ -d "$1" ] && [ -d "$2" ]; then
     input_files=()
     working_dir=$(pwd)
-    cd $1 && for f in *.ogg; do 
+    cd $1 && for f in *.wav; do 
         input_files+=("$f")
     done && cd $working_dir
     for f in "${input_files[@]}"; do 
