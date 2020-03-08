@@ -19,20 +19,21 @@
 
 
 function convert {
-	# -vn -ar 44100 -ac 2
-    ffmpeg -i $1 -c:a libmp3lame -q:a 0 $2
+    # -vn -ar 44100 -ac 2
+    echo "CONVERT $1 TO $2"
+    ffmpeg -i "$1" -c:a libmp3lame -q:a 0 "$2"
 }
 
 if [ -f "$1" ]; then
-    convert $1 ${1%.*}.mp3
+    convert "$1" "${1%.*}.mp3"
 elif [ -d "$1" ] && [ -d "$2" ]; then
     input_files=()
     working_dir=$(pwd)
-    cd $1 && for f in *.wav; do 
+    cd $1 && for f in *.wav; do
         input_files+=("$f")
     done && cd $working_dir
-    for f in "${input_files[@]}"; do 
-        convert $1/$f $2/${f%.*}.mp3
+    for f in "${input_files[@]}"; do
+        convert "$1/$f" "$2/${f%.*}.mp3"
     done 
 else
     echo "[ERROR] unknown file or directories"
