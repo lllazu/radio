@@ -18,13 +18,13 @@ input_temp="/tmp/tmp-$(date +%Y%m%d-%H%M%S).mp3"
 cp "$1" $input_temp
 output_temp="/tmp/tmp-$(date +%Y%m%d-%H%M%S)-2.mp3"
 
-# if avconv does not suprort -to parameter
+# if ffmpeg does not suprort -to parameter
 duration_nanosec=$(($(date -d "$3" "+%s%N") - $(date -d "$2" "+%s%N")))
 duration=$(echo "scale=2; $duration_nanosec/1000000000" | bc)
-avconv -i $input_temp -ab $bitrate -ss $2 -t $duration $output_temp
+ffmpeg -i $input_temp -ab $bitrate -ss $2 -t $duration $output_temp
 
-# if avconv suprorts -to parameter
-#avconv -i $input_temp -ab $bitrate -ss $2 -to $3 $output_temp
+# if ffmpeg suprorts -to parameter
+#ffmpeg -i $input_temp -ab $bitrate -ss $2 -to $3 $output_temp
 
 rm -f $input_temp
 cp $output_temp "${1%.*}-2.mp3"
